@@ -36,6 +36,7 @@ function Deportista(nombre, apellido) {
 
 heredaDe( Deportista, Persona)
 
+//Sobreescritura
 Deportista.prototype.saludar = function() {
     console.log( `Hola soy ${this.nombre} ${this.apellido}, y soy deportista.` )
 }
@@ -46,6 +47,6 @@ objeto1.soyAlto()
 
 var objeto2 = new Deportista('Gehovanny', 'Lam Chang')
 objeto2.saludar()
-objeto2.saludar2()
+objeto2.saludar2(objeto2.nombre, objeto2.apellido)
 objeto2.altura = 1.80
 objeto2.soyAlto()

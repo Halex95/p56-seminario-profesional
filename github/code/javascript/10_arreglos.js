@@ -33,8 +33,9 @@ var objeto5 = {
     cantidadLibros: 50,
 }
 
-var personas = [ objeto1, objeto2, objeto3, objeto4, objeto5]
+var personas = [ objeto1, objeto2, objeto3, objeto4, objeto5 ]
 
+// Recorrer un arreglo de objetos
 for (persona of personas) {
     console.log( `${persona.nombre} ${persona.apellido}` )
 }
@@ -49,44 +50,48 @@ for (var i=0; i<personas.length; i++) {
 const esAlta = (objeto) => objeto.altura >= 1.70
 var personasAltas = personas.filter( esAlta )
 
-console.log( personasAltas ) 
+console.log( personasAltas )
 for (persona of personasAltas) {
     console.log( `${persona.nombre} ${persona.apellido}` )
 }
 
-// Uso de la función map con arreglos
+// Uso de la funcion map con arreglos
 
-for (persona of personas) [
-    persona.altura = persona.altura /100
-]
+for (persona of personas) {
+    persona.altura = persona.altura / 100
+}
 console.log( personas )
 
-
-//const pasarAlturasMetros = (objeto) => {
+const pasarAlturasMetros = (objeto) => {
     objeto.altura = objeto.altura / 100
     return objeto
 }
 
-var personasMetros = personas.map( pasarAlturasMetros )
-console.log( personasMetros )
+var otrasPersonas = []
 
-var personasCm = personas-map( function (objeto) {
-    objeto.altura = objeto.altura * 100
-    return objeto
-} )
-console.log( personasCm )
+for (persona of personas) {
+    otrasPersonas.push( { ... persona } )
+}
 
-//Uso de la función reduce en arreglos
+otrasPersonas.map( pasarAlturasMetros )
+console.log( personas )
+console.log( otrasPersonas )
+
+// var personasCm = personas.map( function (objeto) {
+//     objeto.altura = objeto.altura * 100
+//     return objeto
+// } )
+// console.log( personasCm )
+
+// Uso de la función reduce en arreglos
 var sum = 0
 for (persona of personas) {
     sum += persona.cantidadLibros
 }
-console.log( `La cantidad de Libros en total es ${sum}` )
+console.log( `La cantidad de libros en total es ${sum}` )
 
 
+const contabilizarLibros = (acum, { cantidadLibros }) => acum + cantidadLibros
+var totalLibros = personas.reduce( contabilizarLibros, 0)
 
-const contabilizarLibros = (acum, { cantidadLibros }) => acum + cantidadLibros 
-
-var totalLibros = personas.reduce( contabilizarLibros, 0 )
-
-console.log( `La cantidad de Libros en total es ${totalLibros}` )
+console.log( `La cantidad de libros en total es ${totalLibros}` )
